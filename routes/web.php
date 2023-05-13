@@ -1,0 +1,33 @@
+<?php
+
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\infraccaoController;
+use App\Http\Controllers\ReciboController;
+use App\Http\Controllers\UtilizadorController;
+use Dompdf\Adapter\PDFLib;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+
+
+});
+
+Route::get('/', [ReciboController::class, 'index' ]);
+
+
+//Route::get('/', [UtilizadorController::class, 'admin']);
+Route::get('addAgente', [UtilizadorController::class, 'storeAgente']);
+Route::get('login', [AuthController::class, 'login']);
+Route::get('logout', [AuthController::class, 'logout']);
+Route::get('infraccao', [InfraccaoController::class, 'storeInfraccao']);
