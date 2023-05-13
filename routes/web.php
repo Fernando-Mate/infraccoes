@@ -5,6 +5,7 @@ use App\Http\Controllers\infraccaoController;
 use App\Http\Controllers\ReciboController;
 use App\Http\Controllers\UtilizadorController;
 use Dompdf\Adapter\PDFLib;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +20,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-
-
+    return view('index');
 });
 
-Route::get('/', [ReciboController::class, 'index' ]);
+//Route::get('/', [ReciboController::class, 'index' ]);
 
 
 //Route::get('/', [UtilizadorController::class, 'admin']);
@@ -31,3 +31,7 @@ Route::get('addAgente', [UtilizadorController::class, 'storeAgente']);
 Route::get('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::get('infraccao', [InfraccaoController::class, 'storeInfraccao']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
